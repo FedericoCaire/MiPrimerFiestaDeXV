@@ -13,6 +13,7 @@ begin
     case seleccionado of
     1: Registrar_Evento(lista);
     2: Busqueda(lista);
+    3: Eliminar_Evento(lista);
     end;
   end;
 end.

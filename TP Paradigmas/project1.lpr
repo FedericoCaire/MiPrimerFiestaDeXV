@@ -1,6 +1,6 @@
 program project1;
 
-uses crt,TiposDominio, Interfaz, ListaMemoriaPrincipal;
+uses crt,TiposDominio, Interfaz, ListaMemoriaPrincipal, Validaciones;
 var seleccionado:byte;
     x: t_dato_lista;
     lista: t_lista;
