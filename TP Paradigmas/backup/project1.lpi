@@ -39,16 +39,6 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="Interfaz"/>
       </Unit>
-      <Unit>
-        <Filename Value="listamemoriasecundaria.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="ListaMemoriaSecundaria"/>
-      </Unit>
-      <Unit>
-        <Filename Value="validaciones.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="Validaciones"/>
-      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

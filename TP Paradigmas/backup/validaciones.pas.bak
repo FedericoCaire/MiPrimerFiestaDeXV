@@ -7,7 +7,6 @@ interface
 uses
   SysUtils;
 
-function Valida_Tipo(aux: string):boolean;
 function Transf_Hora(hora: shortstring): integer;
 function Valida_Hora(hora: shortstring): boolean;
 function Valida_Fecha(x: shortstring): boolean;
@@ -15,16 +14,6 @@ function Transf_Fecha(x: string): String;
 
 implementation
 
-function Valida_Tipo(aux: string):boolean;
-begin
-  case aux of
-    'cumpleanios': Valida_Tipo:= True;
-    'aniversario': Valida_Tipo:= True;
-    'reunion': Valida_Tipo:= True;
-    'otro': Valida_Tipo:= True;
-  else Valida_Tipo:=False
-  end;
-end;
 function Transf_Hora(hora: shortstring): integer;
 begin
    Transf_Hora:=  StrToInt(copy(hora,1,2) + copy(hora,4,2));
