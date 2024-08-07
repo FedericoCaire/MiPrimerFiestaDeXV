@@ -7,6 +7,7 @@ interface
 uses
   SysUtils;
 
+function Valida_Tipo(aux: string):boolean;
 function Transf_Hora(hora: shortstring): integer;
 function Valida_Hora(hora: shortstring): boolean;
 function Valida_Fecha(x: shortstring): boolean;
@@ -14,6 +15,16 @@ function Transf_Fecha(x: string): String;
 
 implementation
 
+function Valida_Tipo(aux: string):boolean;
+begin
+  case aux of
+    'cumpleanios': Valida_Tipo:= True;
+    'aniversario': Valida_Tipo:= True;
+    'reunion': Valida_Tipo:= True;
+    'otro': Valida_Tipo:= True;
+  else Valida_Tipo:=False
+  end;
+end;
 function Transf_Hora(hora: shortstring): integer;
 begin
    Transf_Hora:=  StrToInt(copy(hora,1,2) + copy(hora,4,2));
@@ -23,24 +34,6 @@ begin
   if not(hora[1] in ['0'..'2']) or not(hora[2] in ['0'..'9']) or ((hora[1] = '2') and (hora[2] in ['4'..'9'])) or not(hora[4] in ['0'..'5']) or not(hora[5] in ['0'..'9']) then
     result:=false
   else result:= true;
-end;
-Function StrToTipo(dato: string):t_tipo;
-begin
-    case dato of
-    'cumpleanios': StrToTipo:= cumpleanios;
-    'aniversario': StrToTipo:= aniversario;
-    'reunion': StrToTipo:= reunion;
-    'otro': StrToTipo:= otro;
-    end;
-end;
-Function TipoToStr(dato: t_tipo):string;
-begin
-    case dato of
-    cumpleanios: TipoToStr:= 'cumpleanios';
-    aniversario: TipoToStr:= 'aniversario';
-    reunion: TipoToStr:= 'reunion';
-    otro: TipoToStr:= 'otro';
-    end;
 end;
 function Valida_Fecha(x: shortstring): boolean;
 var dia,mes: ShortInt; anio: integer;
