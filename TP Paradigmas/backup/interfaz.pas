@@ -8,13 +8,13 @@ const
   color_fondo=black;
   color_salir=red;
 
-procedure inicia_programa;
+procedure Iniciar_Programa;
 
 implementation
 
-procedure pedir_datos_evento(var evento:t_evento);
+procedure Pedir_Datos_Evento(var evento: t_evento);
 var
-  aux:string;
+  aux: string;
 begin
   clrscr;
   write('Ingrese titulo: ');
@@ -27,7 +27,7 @@ begin
     readln(aux);
   end
   until Valida_Tipo(aux);
-  evento.tipo:= StrToTipo(aux);
+  evento.tipo:= aux;
   write('Ingrese descripcion: ');
   readln(evento.desc);
   repeat
@@ -61,173 +61,208 @@ begin
     write('Ingrese hora de final: ');
     readln(evento.hora_fin);
   end
-  until Valida_Hora(evento.hora_fin) and ((Transf_Fecha(evento.fecha_fin) <> Transf_Fecha(evento.fecha_inicio)) or (Transf_Hora(evento.hora_fin) > Transf_Hora(evento.hora_inicio)));
+  until ((Transf_Fecha(evento.fecha_fin) > Transf_Fecha(evento.fecha_inicio)) or (Transf_Hora(evento.hora_fin) > Transf_Hora(evento.hora_inicio))) and Valida_Hora(evento.hora_fin);
   Write('Ingrese ubicacion: ');
   readln(evento.ubicacion);
 end;
-procedure pedir_id_evento(l: t_lista; var id:byte);
+procedure Pedir_ID_Evento(l: t_lista; var id: byte);
 begin
   clrscr;
   repeat
+    gotoxy(1,1);
+    clreol;
     Write('Ingrese el ID del evento: ');
     readln(id);
   until id < l.tam;
 end;
-procedure pedir_tipo_evento(var tipo_evento:t_tipo);
+procedure Pedir_Tipo_Evento(var tipo_evento: shortstring);
 var
-  buscado:string;
-  aux_tipo:t_tipo;
+  buscado: shortstring;
+  aux_tipo: shortstring;
 begin
-  clrscr;
-  write('Ingrese tipo de evento a Buscar: ');
-  readln(buscado);
-  aux_tipo:= StrToTipo(Lowercase(buscado));
-  if not(aux_tipo in [cumpleanios..otro]) then writeln('No existe el Tipo de Evento Ingresado')
-  else
-    tipo_evento:=aux_tipo;
+  ClrScr;
+  Repeat
+    GoToxy(1,1);
+    ClrEol;
+    Write('Ingrese tipo de evento a Buscar: ');
+    Readln(buscado);
+    aux_tipo:= (Lowercase(buscado));
+    GoToxy(1,3);
+    ClrEol;
+    TextColor(4);
+    Writeln('No existe el Tipo de Evento Ingresado');
+    TextColor(15);
+  Until Valida_Tipo(aux_tipo)
+  GoToxy(1,3);
+  ClrEol;
+  tipo_evento:= aux_tipo;
 end;
-procedure pedir_fechaini_fechafin(var fecha_inicio,fecha_fin:string);
+procedure Pedir_FechaIni_FechaFin(var fecha_inicio,fecha_fin: shortstring);
 begin
-  clrscr;
+  ClrScr;
   fecha_inicio:='';
   fecha_fin:='';
   while not(Valida_Fecha(fecha_inicio)) do
   begin
-    write('Ingrese Fecha de Inicio(DD/MM/YYYY): ');
-    readln(fecha_inicio);
+    GoToxy(1,1);
+    ClrEol;
+    Write('Ingrese Fecha de Inicio(DD/MM/YYYY): ');
+    Readln(fecha_inicio);
   end;
-  while not(Valida_Fecha(fecha_fin)) and (Transf_Fecha(fecha_inicio) > Transf_Fecha(fecha_fin)) do
+  while not(Valida_Fecha(fecha_fin)) or (Transf_Fecha(fecha_inicio) > Transf_Fecha(fecha_fin)) do
   begin
-    write('Ingrese Fecha de Fin(DD/MM/YYYY): ');
-    readln(fecha_fin);
+    GoToxy(1,2);
+    ClrEol;
+    Write('Ingrese Fecha de Fin(DD/MM/YYYY): ');
+    Readln(fecha_fin);
   end;
 end;
-procedure pedir_titulo_evento(var titulo:string);
+procedure Pedir_Titulo_Evento(var titulo: shortstring);
 begin
-  clrscr;
+  ClrScr;
   titulo:= '';
   while length(titulo) < 1 do
   begin
-  write('Ingrese el titulo del evento: ');
-  readln(titulo);
+    GoToxy(1,1);
+    ClrEol;
+    Write('Ingrese el titulo del evento: ');
+    Readln(titulo);
   end;
 end;
-procedure menu_opciones_busqueda(var seleccionado:byte);
+procedure Menu_Opciones_Busqueda(var seleccionado: byte);
 var
   exit:boolean;
   tecla:char;
 begin
-  exit:=false;
-  seleccionado:=1;
-
+  exit:= false;
+  seleccionado:= 1;
   while not exit do
   begin
-    clrscr;
-    if seleccionado=1 then textbackground(color_selec) else textbackground(color_fondo);
-    writeln('Buscar por Tipo de Evento');
-    if seleccionado=2 then textbackground(color_selec) else textbackground(color_fondo);
-    writeln('Buscar Entre Fechas');
-    if seleccionado=3 then textbackground(color_selec) else textbackground(color_fondo);
-    writeln('Buscar por Subcadena en el Titulo');
-    if seleccionado=4 then textbackground(color_salir) else textbackground(color_fondo);
-    writeln('Volver');
-    textbackground(0);
-    tecla:=readkey;
-
-    if tecla=#00 then tecla:=readkey;
-
+    ClrScr;
+    GoToxy(48,2);
+    TextColor(3);
+    Writeln('MENU DE OPCIONES');
+    TextColor(15);
+    if seleccionado = 1 then textbackground(color_selec) else textbackground(color_fondo);
+    GoToxy(39,4);
+    Writeln('     Buscar por Tipo de Evento     ');
+    if seleccionado = 2 then textbackground(color_selec) else textbackground(color_fondo);
+    GoToxy(39,6);
+    Writeln('        Buscar Entre Fechas        ');
+    if seleccionado = 3 then textbackground(color_selec) else textbackground(color_fondo);
+    GoToxy(39,8);
+    Writeln(' Buscar por Subcadena en el Titulo ');
+    if seleccionado = 4 then textbackground(color_salir) else textbackground(color_fondo);
+    GoToxy(39,10);
+    Writeln('              Volver               ');
+    TextBackground(0);
+    tecla:= Readkey;
+    if tecla = #00 then tecla:= Readkey;
     case tecla of
-    #72:  if seleccionado>1 then seleccionado:=seleccionado-1;
-    #80:  if seleccionado<4 then seleccionado:=seleccionado+1;
-    #13:  exit:=true;
+    #72:  if seleccionado > 1 then seleccionado:= seleccionado-1;
+    #80:  if seleccionado < 4 then seleccionado:= seleccionado+1;
+    #13:  exit:= true;
     end;
   end;
 end;
 procedure Busqueda(var l: t_lista);
 var
   seleccionado: byte;
-  tipo_evento:t_tipo;
-  fecha_inicio,fecha_fin,titulo:string;
+  tipo_evento: shortstring;
+  fecha_inicio,fecha_fin,titulo: shortstring;
 begin
-  if l.tam<>0 then
+  if l.tam <> 0 then
   begin
     Menu_Opciones_Busqueda(seleccionado);
     case seleccionado of
-      1:begin
-        pedir_tipo_evento(tipo_evento);
-        Buscar_Por_Evento(l,tipo_evento);
-      end;
-      2:begin
-        pedir_fechaini_fechafin(fecha_inicio,fecha_fin);
-        Buscar_Por_Fechas(l,fecha_inicio,fecha_fin);
-      end;
-      3:begin
-        pedir_titulo_evento(titulo);
-        Buscar_Por_Titulo(l,titulo);
-      end;
+    1: begin
+         Pedir_Tipo_Evento(tipo_evento);
+         Buscar_Por_Evento(l,tipo_evento);
+       end;
+    2: begin
+         Pedir_FechaIni_FechaFin(fecha_inicio,fecha_fin);
+         Buscar_Por_Fechas(l,fecha_inicio,fecha_fin);
+       end;
+    3: begin
+         Pedir_Titulo_Evento(titulo);
+         Buscar_Por_Titulo(l,titulo);
+       end;
     end;
   end
   else
-    write('No hay eventos registrados');
+  begin
+    ClrScr;
+    Write('No hay eventos registrados');
+    Readkey;
+  end;
 end;
-procedure menu_opciones(var seleccionado:byte);
+procedure Menu_Opciones(var seleccionado: byte);
 var
-  exit:boolean;
-  tecla:char;
+  exit: boolean;
+  tecla: char;
 begin
-  exit:=false;
-  seleccionado:=1;
+  exit:= false;
+  seleccionado:= 1;
   while not exit do
   begin
-    clrscr;
-    if seleccionado=1 then textbackground(color_selec) else textbackground(color_fondo);
-    writeln('Registrar Evento');
-    if seleccionado=2 then textbackground(color_selec) else textbackground(color_fondo);
-    writeln('Buscar Evento');
-    if seleccionado=3 then textbackground(color_selec) else textbackground(color_fondo);
-    writeln('Eliminar Evento');
-    if seleccionado=4 then textbackground(color_salir) else textbackground(color_fondo);
-    writeln('Salir');
-    textbackground(0);
-    tecla:=readkey;
-    if tecla=#00 then tecla:=readkey;
+    ClrScr;
+    GoToxy(45,2);
+    TextColor(3);
+    Writeln('MENU DE OPCIONES');
+    TextColor(15);
+    if seleccionado = 1 then textbackground(color_selec) else textbackground(color_fondo);
+    GoToxy(40,4);
+    Writeln('     Registrar Evento     ');
+    if seleccionado = 2 then textbackground(color_selec) else textbackground(color_fondo);
+    GoToxy(40,6);
+    Writeln('      Buscar Evento       ');
+    if seleccionado = 3 then textbackground(color_selec) else textbackground(color_fondo);
+    GoToxy(40,8);
+    Writeln('     Eliminar Evento      ');
+    if seleccionado = 4 then textbackground(color_salir) else textbackground(color_fondo);
+    GoToxy(40,10);
+    Writeln('          Salir           ');
+    TextBackground(0);
+    tecla:= Readkey;
+    if tecla=#00 then tecla:= Readkey;
     case tecla of
-    #72:  if seleccionado>1 then seleccionado:=seleccionado-1;
-    #80:  if seleccionado<4 then seleccionado:=seleccionado+1;
-    #13:  exit:=true;
+    #72: if seleccionado > 1 then seleccionado:= seleccionado-1;
+    #80: if seleccionado < 4 then seleccionado:= seleccionado+1;
+    #13: exit:= true;
     end;
   end;
 end;
-procedure inicia_programa;
+procedure Iniciar_Programa;
 var
   seleccionado: byte;
   evento: t_evento;
   lista: t_lista;
   id: byte;
 begin
-  seleccionado:=0;
+  seleccionado:= 0;
   CrearLista(lista);
   While seleccionado <> 4 do
   begin
     menu_opciones(seleccionado);
     case seleccionado of
-      1: begin
-        Pedir_datos_evento(evento);
-        Registrar_Evento(lista,evento);
-      end;
-      2: Busqueda(lista);
-      3: begin
-        if lista.tam <> 0 then
-        begin
-          pedir_id_evento(lista,id);
-          Eliminar_Evento(lista,id);
-        end
-        else
-        begin
-          write('No hay ningun evento registrado');
-          readkey;
-        end;
-      end;
+    1: begin
+         Pedir_datos_evento(evento);
+         Registrar_Evento(lista,evento);
+       end;
+    2: Busqueda(lista);
+    3: begin
+         if lista.tam <> 0 then
+         begin
+           Pedir_ID_Evento(lista,id);
+           Eliminar_Evento(lista,id);
+         end
+         else
+         begin
+           ClrScr;
+           Write('No hay ningun evento registrado');
+           Readkey;
+         end;
+       end;
     end;
   end;
 end;

@@ -1,6 +1,6 @@
 program project1;
 uses
-  Interfaz, Validaciones;
+  Interfaz, Validaciones, ListaMemoriaSecundaria;
 begin
   inicia_programa;
 end.

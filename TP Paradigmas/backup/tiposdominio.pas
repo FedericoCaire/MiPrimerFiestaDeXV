@@ -3,21 +3,20 @@ interface
 const
   N = 100;
 type
-  t_tipo = (cumpleanios,aniversario,reunion,otro);
   t_evento = record
-     id: integer;
-     titulo:string;
-     desc: string;
-     tipo: t_tipo;
-     fecha_inicio: string;
-     fecha_fin: string;
-     hora_inicio: string;
-     hora_fin: string;
+     id: byte;
+     titulo: shortstring;
+     desc: shortstring;
+     tipo: shortstring;
+     fecha_inicio: shortstring;
+     fecha_fin: shortstring;
+     hora_inicio: shortstring;
+     hora_fin: shortstring;
      ubicacion: string;
   end;
   t_lista = record
-      cab,act,tam: integer;
-      elem: array[1..N] of t_evento;
+    cab,act,tam: byte;
+    elem: array[1..N] of t_evento;
   end;
 implementation
 end.

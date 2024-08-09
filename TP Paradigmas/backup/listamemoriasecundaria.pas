@@ -11,7 +11,7 @@ const
      Ruta = './archivo.dat';
 
 type
-  t_archivo = file of t_evento;
+  t_archivo = file of char;
 
 procedure CrearArchivo(var arch: t_archivo);
 procedure AbrirArchivo(var arch: t_archivo);
