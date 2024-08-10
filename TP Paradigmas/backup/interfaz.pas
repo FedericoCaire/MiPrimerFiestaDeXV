@@ -2,7 +2,7 @@ unit Interfaz;
 
 interface
 uses
-  crt,TiposDominio,ListaMemoriaPrincipal;
+  crt,TiposDominio,Validaciones,ListaMemoriaPrincipal;
 const
   color_selec=red;
   color_fondo=black;
@@ -65,7 +65,7 @@ begin
   Write('Ingrese ubicacion: ');
   readln(evento.ubicacion);
 end;
-procedure Pedir_ID_Evento(l: t_lista; var id: byte);
+procedure Pedir_ID_Evento(var id: byte);
 begin
   clrscr;
   repeat
@@ -73,7 +73,7 @@ begin
     clreol;
     Write('Ingrese el ID del evento: ');
     readln(id);
-  until id < l.tam;
+  until id < N;
 end;
 procedure Pedir_Tipo_Evento(var tipo_evento: shortstring);
 var
@@ -165,35 +165,28 @@ begin
     end;
   end;
 end;
-procedure Busqueda(var l: t_lista);
+procedure Busqueda;
 var
   seleccionado: byte;
   tipo_evento: shortstring;
   fecha_inicio,fecha_fin,titulo: shortstring;
 begin
-  if l.tam <> 0 then
   begin
     Menu_Opciones_Busqueda(seleccionado);
     case seleccionado of
     1: begin
          Pedir_Tipo_Evento(tipo_evento);
-         Buscar_Por_Evento(l,tipo_evento);
+         Buscar_Por_Evento(tipo_evento);
        end;
     2: begin
          Pedir_FechaIni_FechaFin(fecha_inicio,fecha_fin);
-         Buscar_Por_Fechas(l,fecha_inicio,fecha_fin);
+         Buscar_Por_Fechas(fecha_inicio,fecha_fin);
        end;
     3: begin
          Pedir_Titulo_Evento(titulo);
-         Buscar_Por_Titulo(l,titulo);
+         Buscar_Por_Titulo(titulo);
        end;
     end;
-  end
-  else
-  begin
-    ClrScr;
-    Write('No hay eventos registrados');
-    Readkey;
   end;
 end;
 procedure Menu_Opciones(var seleccionado: byte);
@@ -236,32 +229,22 @@ procedure Iniciar_Programa;
 var
   seleccionado: byte;
   evento: t_evento;
-  lista: t_lista;
   id: byte;
 begin
   seleccionado:= 0;
-  CrearLista(lista);
+  Crear_Lista_Arch;
   While seleccionado <> 4 do
   begin
     menu_opciones(seleccionado);
     case seleccionado of
     1: begin
          Pedir_datos_evento(evento);
-         Registrar_Evento(lista,evento);
+         Registrar_Evento(evento);
        end;
-    2: Busqueda(lista);
+    2: Busqueda;
     3: begin
-         if lista.tam <> 0 then
-         begin
-           Pedir_ID_Evento(lista,id);
-           Eliminar_Evento(lista,id);
-         end
-         else
-         begin
-           ClrScr;
-           Write('No hay ningun evento registrado');
-           Readkey;
-         end;
+         Pedir_ID_Evento(id);
+         Eliminar_Evento(id);
        end;
     end;
   end;
