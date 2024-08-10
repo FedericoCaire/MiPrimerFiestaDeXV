@@ -219,8 +219,8 @@ begin
 end;
 procedure Buscar_Por_Fechas(var l:t_lista; fechaini,fechafin:shortstring);
 var
-    evento: t_evento;
-    enc: boolean;
+  evento: t_evento;
+  enc: boolean;
 begin
   Primero(l);
   While not(Fin(l)) do

@@ -1,7 +1,7 @@
 unit TiposDominio;
 interface
 const
-  N = 100;
+  N = 100;   n
 type
   t_evento = record
      id: byte;

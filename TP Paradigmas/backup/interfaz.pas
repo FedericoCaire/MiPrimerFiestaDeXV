@@ -92,7 +92,7 @@ begin
     TextColor(4);
     Writeln('No existe el Tipo de Evento Ingresado');
     TextColor(15);
-  Until Valida_Tipo(aux_tipo)
+  Until Valida_Tipo(aux_tipo);
   GoToxy(1,3);
   ClrEol;
   tipo_evento:= aux_tipo;

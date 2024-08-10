@@ -11,13 +11,13 @@ const
      Ruta = './archivo.dat';
 
 type
-  t_archivo = file of char;
+  t_archivo = file of t_evento;
 
 procedure CrearArchivo(var arch: t_archivo);
 procedure AbrirArchivo(var arch: t_archivo);
 procedure CerrarArchivo(var arch: t_archivo);
-{procedure AgregarArchivo(var arch: t_archivo; x: t_evento);
-procedure EliminarDelArchivo(var arch: t_archivo; posicion: byte);}
+procedure AgregarArchivo(var arch: t_archivo; x: t_evento);
+procedure EliminarDelArchivo(var arch: t_archivo; posicion: byte);
 
 implementation
 
@@ -35,7 +35,7 @@ procedure CerrarArchivo(var arch: t_archivo);
 begin
   Close(arch);
 end;
-{procedure AgregarArchivo(var arch: t_archivo; x: t_dato_lista);
+procedure AgregarArchivo(var arch: t_archivo; x: t_evento);
 begin
   Seek(arch,filesize(arch));
   Write(arch,x);
@@ -43,6 +43,6 @@ end;
 procedure EliminarDelArchivo(var arch: t_archivo; posicion: byte);
 begin
 
-end; }
+end;
 end.
 

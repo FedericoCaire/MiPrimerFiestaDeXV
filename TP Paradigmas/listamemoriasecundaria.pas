@@ -5,7 +5,7 @@ unit ListaMemoriaSecundaria;
 interface
 
 uses
-  TiposDominio;
+  TiposDominio;   n
 
 const
      Ruta = './archivo.dat';

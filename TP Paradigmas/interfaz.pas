@@ -1,6 +1,6 @@
 unit Interfaz;
 
-interface
+interface          n
 uses
   crt,TiposDominio,ListaMemoriaPrincipal;
 const

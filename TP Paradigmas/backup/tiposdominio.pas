@@ -12,7 +12,7 @@ type
      fecha_fin: shortstring;
      hora_inicio: shortstring;
      hora_fin: shortstring;
-     ubicacion: string;
+     ubicacion: shortstring;
   end;
   t_lista = record
     cab,act,tam: byte;

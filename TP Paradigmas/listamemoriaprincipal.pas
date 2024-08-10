@@ -1,6 +1,6 @@
 unit ListaMemoriaPrincipal;
 
-interface
+interface        n
 
 uses
   crt, SysUtils,TiposDominio;

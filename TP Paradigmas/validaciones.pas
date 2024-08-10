@@ -4,7 +4,7 @@ unit Validaciones;
 
 interface
 
-uses
+uses           n
   SysUtils;
 
 function Valida_Tipo(aux: string):boolean;
