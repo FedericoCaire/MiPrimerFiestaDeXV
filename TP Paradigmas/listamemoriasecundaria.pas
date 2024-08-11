@@ -5,7 +5,7 @@ unit ListaMemoriaSecundaria;
 interface
 
 uses
-  crt,TiposDominio;
+  crt,TiposDominio,Validaciones;
 
 const
      Ruta = './archivo.dat';
@@ -16,6 +16,9 @@ procedure Crear_Lista_Arch;
 procedure AbrirArchivo(var arch: t_archivo);
 procedure CerrarArchivo(var arch: t_archivo);
 procedure Registrar_Evento(evento: t_evento);
+procedure Buscar_Por_Tipo(tipo:shortstring);
+procedure Buscar_Por_Fechas(fechaini,fechafin:shortstring);
+Procedure Buscar_Por_Titulo(titulo:shortstring);
 procedure Eliminar_Evento(id:byte);
 
 implementation
@@ -53,9 +56,12 @@ var
 begin
   seek(arch,pos);
   read(arch,x);
-  x.tipo:= 'BAJA';
-  seek(arch,filepos(arch)-1);
-  write(arch,x);
+  if x.tipo <> 'BAJA' then
+  begin
+    x.tipo:= 'BAJA';
+    seek(arch,filepos(arch)-1);
+    write(arch,x);
+  end;
 end;
 procedure Mostrar_Evento(x: t_evento);
 begin
@@ -113,17 +119,16 @@ var
   evento: t_evento;
   enc: boolean;
 begin
-  Primero(l);
-  While not(Fin(l)) do
+  Primero(arch);
+  While not(EOF(arch)) do
   begin
     clrscr;
-    Recuperar(l,evento);
+    Read(arch,evento);
     if (Transf_Fecha(evento.fecha_inicio) >= Transf_Fecha(fechaini)) and (Transf_Fecha(evento.fecha_fin) <= Transf_Fecha(fechafin)) then
     begin
       enc:= true;
       Mostrar_Evento(evento);
     end;
-    Siguiente(l);
   end;
   clrscr;
   if enc then
@@ -142,17 +147,16 @@ var
   evento: t_evento;
   enc: boolean;
 begin
-  Primero(l);
-  While not(Fin(l)) do
+  Primero(arch);
+  While not(EOF(arch)) do
   begin
     clrscr;
-    recuperar(l,evento);
+    rEad(arch,evento);
     if Pos(titulo,evento.titulo)<>0 then
     begin
       enc:= true;
       Mostrar_Evento(evento);
     end;
-    Siguiente(l);
   end;
   clrscr;
   if enc then

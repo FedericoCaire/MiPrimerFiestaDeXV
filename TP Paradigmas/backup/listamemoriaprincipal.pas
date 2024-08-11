@@ -15,10 +15,11 @@ procedure Desplazar_Adelante(var l: t_lista; posicion: byte);
 procedure EliminarLista(var l: t_lista; buscado: byte; var x: t_evento);
 procedure Siguiente(var l: t_lista);
 procedure Primero(var l: t_lista);
+function Fin(l: t_lista): boolean;
 function Tamanio(var l: t_lista): byte;
 procedure Recuperar(var l: t_lista; var e: t_evento);
 procedure Registrar_Evento(evento:t_evento);
-procedure Buscar_Por_Evento(tipo:shortstring);
+procedure Buscar_Por_Tipo(tipo:shortstring);
 procedure Buscar_Por_Fechas(fechaini,fechafin:shortstring);
 Procedure Buscar_Por_Titulo(titulo:shortstring);
 procedure Eliminar_Evento(id:byte);
@@ -42,6 +43,22 @@ begin
   Write('Presione una Tecla para continuar');
   TextColor(15);
   Readkey;
+end;
+function Buscado(var l: t_lista; busc: byte): boolean;
+var
+  enc: boolean;
+  x: t_evento;
+begin
+  enc:= false;
+  result:= false;
+  primero(l);
+  while not(Fin(l)) and not(enc) do
+  begin
+    recuperar(l,x);
+    if x.id = busc then
+      enc:= true;
+    siguiente(l);
+  end;
 end;
 procedure Crear_Lista_Arch;
 begin
@@ -125,12 +142,19 @@ procedure Recuperar(var l: t_lista; var e: t_evento);
 begin
   e:= l.elem[l.act];
 end;
+function Fin(l: t_lista): boolean;
+begin
+  Fin := l.act = Tamanio(l) + 1;
+end;
 procedure Registrar_Evento(evento: t_evento);
 begin
-   evento.id:= l.tam;
-   agregar(l,evento);
+  if tamanio(l) = 0 then
+    evento.id:= 0
+  else
+    evento.id:= l[tamanio(l)].id+1;
+  agregar(l,evento);
 end;
-procedure Buscar_Por_Evento(tipo:shortstring);
+procedure Buscar_Por_Tipo(tipo:shortstring);
 var
   evento: t_evento;
   enc: boolean;
@@ -221,7 +245,7 @@ procedure Eliminar_Evento(id:byte);
 var
   x: t_evento;
 begin
-  if id < tamanio(l) then
+  if buscado(l,id) then
     EliminarLista(l,id,x)
   else
     Writeln('No se encontro el evento a eliminar');

@@ -2,7 +2,7 @@ unit Interfaz;
 
 interface
 uses
-  crt,TiposDominio,Validaciones,ListaMemoriaPrincipal;
+  crt,TiposDominio,Validaciones,ListaMemoriasecundaria;
 const
   color_selec=red;
   color_fondo=black;
@@ -176,7 +176,7 @@ begin
     case seleccionado of
     1: begin
          Pedir_Tipo_Evento(tipo_evento);
-         Buscar_Por_Evento(tipo_evento);
+         Buscar_Por_Tipo(tipo_evento);
        end;
     2: begin
          Pedir_FechaIni_FechaFin(fecha_inicio,fecha_fin);

@@ -2,7 +2,7 @@ unit Interfaz;
 
 interface
 uses
-  crt,TiposDominio,Validaciones,ListaMemoriasecundaria;
+  crt,TiposDominio,Validaciones,ListaMemoriaprincipal;
 const
   color_selec=red;
   color_fondo=black;

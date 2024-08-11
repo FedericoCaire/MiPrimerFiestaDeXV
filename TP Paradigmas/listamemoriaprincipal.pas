@@ -44,6 +44,22 @@ begin
   TextColor(15);
   Readkey;
 end;
+function Buscado(var l: t_lista; busc: byte): boolean;
+var
+  enc: boolean;
+  x: t_evento;
+begin
+  enc:= false;
+  result:= false;
+  primero(l);
+  while not(Fin(l)) and not(enc) do
+  begin
+    recuperar(l,x);
+    if x.id = busc then
+      enc:= true;
+    siguiente(l);
+  end;
+end;
 procedure Crear_Lista_Arch;
 begin
   l.cab := 0;
@@ -135,7 +151,7 @@ begin
   if tamanio(l) = 0 then
     evento.id:= 0
   else
-    evento.id:= l[tamanio(l)].id+1;
+    evento.id:= l.elem[tamanio(l)].id+1;
   agregar(l,evento);
 end;
 procedure Buscar_Por_Tipo(tipo:shortstring);
@@ -229,7 +245,7 @@ procedure Eliminar_Evento(id:byte);
 var
   x: t_evento;
 begin
-  if id < tamanio(l) then
+  if buscado(l,id) then
     EliminarLista(l,id,x)
   else
     Writeln('No se encontro el evento a eliminar');
