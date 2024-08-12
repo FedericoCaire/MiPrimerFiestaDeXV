@@ -8,8 +8,8 @@
       <Unit>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="18" Y="7"/>
-        <UsageCount Value="41"/>
+        <CursorPos X="11" Y="3"/>
+        <UsageCount Value="43"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -17,9 +17,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="TiposDominio"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="6"/>
-        <CursorPos X="115" Y="10"/>
-        <UsageCount Value="41"/>
+        <CursorPos X="24" Y="20"/>
+        <UsageCount Value="43"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -28,19 +27,20 @@
         <UnitName Value="Interfaz"/>
         <EditorIndex Value="4"/>
         <CursorPos X="54" Y="5"/>
-        <FoldState Value=" T3E0q02311 PjEl50i"/>
-        <UsageCount Value="41"/>
+        <FoldState Value=" T3E0y5 pj9kW0N2 PiFiH0!"/>
+        <UsageCount Value="43"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="validaciones.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Validaciones"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="10"/>
-        <CursorPos X="16" Y="7"/>
-        <FoldState Value=" T3R033 PNO07"/>
-        <UsageCount Value="29"/>
+        <TopLine Value="3"/>
+        <CursorPos X="216" Y="34"/>
+        <FoldState Value=" T3H09112 PLY09"/>
+        <UsageCount Value="31"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -48,21 +48,19 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ListaMemoriaSecundaria"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="18"/>
-        <CursorPos X="49" Y="21"/>
-        <FoldState Value=" T3P04512 PciF0G"/>
-        <UsageCount Value="29"/>
+        <CursorPos X="25" Y="47"/>
+        <FoldState Value=" T3O049 pjGjU0S1W"/>
+        <UsageCount Value="31"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="listamemoriaprincipal.pas"/>
         <UnitName Value="ListaMemoriaPrincipal"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="137"/>
-        <CursorPos Y="67"/>
-        <FoldState Value=" T3S0H0271113 PkOlE0&apos;"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="23"/>
+        <CursorPos X="3" Y="35"/>
+        <FoldState Value=" T3iI04A piaj80T3 PiNj40l"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -96,14 +94,6 @@
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="interfaz.pas"/>
-        <Caret Line="30" Column="20" TopLine="8"/>
-      </Position>
-      <Position>
-        <Filename Value="interfaz.pas"/>
-        <Caret Line="87" Column="21" TopLine="64"/>
-      </Position>
       <Position>
         <Filename Value="interfaz.pas"/>
         <Caret Line="84" Column="34" TopLine="70"/>
@@ -213,8 +203,16 @@
         <Caret Line="58" Column="19" TopLine="27"/>
       </Position>
       <Position>
-        <Filename Value="listamemoriaprincipal.pas"/>
-        <Caret Line="67" TopLine="56"/>
+        <Filename Value="interfaz.pas"/>
+        <Caret Line="5" Column="54"/>
+      </Position>
+      <Position>
+        <Filename Value="listamemoriasecundaria.pas"/>
+        <Caret Line="155" Column="64" TopLine="12"/>
+      </Position>
+      <Position>
+        <Filename Value="listamemoriasecundaria.pas"/>
+        <Caret Line="62" Column="27" TopLine="47"/>
       </Position>
     </JumpHistory>
     <RunParams>

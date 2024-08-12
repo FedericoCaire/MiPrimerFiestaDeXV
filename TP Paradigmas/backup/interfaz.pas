@@ -2,7 +2,7 @@ unit Interfaz;
 
 interface
 uses
-  crt,TiposDominio,Validaciones,ListaMemoriasecundaria;
+  crt,TiposDominio,Validaciones,ListaMemoriaSecundaria;
 const
   color_selec=red;
   color_fondo=black;
@@ -17,8 +17,12 @@ var
   aux: string;
 begin
   clrscr;
-  write('Ingrese titulo: ');
-  readln(evento.titulo);
+  repeat
+    gotoxy(1,1);
+    clreol;
+    write('Ingrese titulo: ');
+    readln(evento.titulo);
+  until evento.titulo <> '';
   repeat
   begin
     gotoxy(1,2);
@@ -28,8 +32,12 @@ begin
   end
   until Valida_Tipo(aux);
   evento.tipo:= aux;
-  write('Ingrese descripcion: ');
-  readln(evento.desc);
+  Repeat
+    gotoxy(1,3);
+    clreol;
+    write('Ingrese descripcion: ');
+    readln(evento.desc);
+  until evento.desc <> '';
   repeat
   begin
     gotoxy(1,4);

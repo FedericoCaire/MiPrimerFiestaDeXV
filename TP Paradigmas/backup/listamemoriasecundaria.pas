@@ -13,19 +13,16 @@ const
 var arch: t_archivo;
 
 procedure Crear_Lista_Arch;
-procedure AbrirArchivo(var arch: t_archivo);
 procedure CerrarArchivo(var arch: t_archivo);
 procedure Registrar_Evento(evento: t_evento);
+procedure Buscar_Por_Tipo(tipo:shortstring);
+procedure Buscar_Por_Fechas(fechaini,fechafin:shortstring);
+Procedure Buscar_Por_Titulo(titulo:shortstring);
 procedure Eliminar_Evento(id:byte);
 
 implementation
 
 procedure Crear_Lista_Arch;
-begin
-  Assign(arch,Ruta);
-  Rewrite(arch);
-end;
-procedure AbrirArchivo(var arch: t_archivo);
 begin
   Assign(arch,Ruta);
   Reset(arch);
@@ -88,6 +85,7 @@ var
   evento: t_evento;
   enc: boolean;
 begin
+  enc:= false;
   Primero(arch);
   while not(EOF(arch)) do
   begin
@@ -116,6 +114,7 @@ var
   evento: t_evento;
   enc: boolean;
 begin
+  enc:= false;
   Primero(arch);
   While not(EOF(arch)) do
   begin
@@ -144,12 +143,13 @@ var
   evento: t_evento;
   enc: boolean;
 begin
+  enc:= false;
   Primero(arch);
   While not(EOF(arch)) do
   begin
     clrscr;
-    rEad(arch,evento);
-    if Pos(titulo,evento.titulo)<>0 then
+    Read(arch,evento);
+    if (Pos(titulo,evento.titulo) <> 0) and (evento.tipo <> 'BAJA') then
     begin
       enc:= true;
       Mostrar_Evento(evento);

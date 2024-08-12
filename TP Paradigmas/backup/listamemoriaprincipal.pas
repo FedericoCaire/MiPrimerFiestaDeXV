@@ -46,17 +46,16 @@ begin
 end;
 function Buscado(var l: t_lista; busc: byte): boolean;
 var
-  enc: boolean;
   x: t_evento;
 begin
-  enc:= false;
+  Buscado:= false;
   result:= false;
   primero(l);
-  while not(Fin(l)) and not(enc) do
+  while not(Fin(l)) and not(Buscado) do
   begin
     recuperar(l,x);
     if x.id = busc then
-      enc:= true;
+      Buscado:= true;
     siguiente(l);
   end;
 end;
@@ -151,7 +150,7 @@ begin
   if tamanio(l) = 0 then
     evento.id:= 0
   else
-    evento.id:= l[tamanio(l)].id+1;
+    evento.id:= l.elem[tamanio(l)].id+1;
   agregar(l,evento);
 end;
 procedure Buscar_Por_Tipo(tipo:shortstring);
@@ -159,6 +158,7 @@ var
   evento: t_evento;
   enc: boolean;
 begin
+  enc:= false;
   Primero(l);
   while not(Fin(l)) do
   begin
@@ -188,6 +188,7 @@ var
   evento: t_evento;
   enc: boolean;
 begin
+  enc:= false;
   Primero(l);
   While not(Fin(l)) do
   begin
@@ -217,6 +218,7 @@ var
   evento: t_evento;
   enc: boolean;
 begin
+  enc:= false;
   Primero(l);
   While not(Fin(l)) do
   begin

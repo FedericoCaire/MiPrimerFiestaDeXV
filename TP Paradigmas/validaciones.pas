@@ -31,7 +31,7 @@ begin
 end;
 function Valida_Hora(hora: shortstring): boolean;
 begin
-  if not(hora[1] in ['0'..'2']) or not(hora[2] in ['0'..'9']) or ((hora[1] = '2') and (hora[2] in ['4'..'9'])) or not(hora[4] in ['0'..'5']) or not(hora[5] in ['0'..'9']) then
+  if not(hora[1] in ['0'..'2']) or not(hora[2] in ['0'..'9']) or ((hora[1] = '2') and (hora[2] in ['4'..'9'])) or not(hora[4] in ['0'..'5']) or not(hora[5] in ['0'..'9']) or not(hora[3] = ':') or (length(hora) <> 5) then
     result:=false
   else result:= true;
 end;

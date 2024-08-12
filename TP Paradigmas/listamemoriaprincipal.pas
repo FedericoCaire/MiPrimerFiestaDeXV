@@ -3,7 +3,7 @@ unit ListaMemoriaPrincipal;
 interface
 
 uses
-  crt, SysUtils, TiposDominio, validaciones;
+  crt, SysUtils, TiposDominio, Validaciones;
 
 var l:t_lista;
 
@@ -46,17 +46,16 @@ begin
 end;
 function Buscado(var l: t_lista; busc: byte): boolean;
 var
-  enc: boolean;
   x: t_evento;
 begin
-  enc:= false;
+  Buscado:= false;
   result:= false;
   primero(l);
-  while not(Fin(l)) and not(enc) do
+  while not(Fin(l)) and not(Buscado) do
   begin
     recuperar(l,x);
     if x.id = busc then
-      enc:= true;
+      Buscado:= true;
     siguiente(l);
   end;
 end;
@@ -159,6 +158,7 @@ var
   evento: t_evento;
   enc: boolean;
 begin
+  enc:= false;
   Primero(l);
   while not(Fin(l)) do
   begin
@@ -188,6 +188,7 @@ var
   evento: t_evento;
   enc: boolean;
 begin
+  enc:= false;
   Primero(l);
   While not(Fin(l)) do
   begin
@@ -217,6 +218,7 @@ var
   evento: t_evento;
   enc: boolean;
 begin
+  enc:= false;
   Primero(l);
   While not(Fin(l)) do
   begin
