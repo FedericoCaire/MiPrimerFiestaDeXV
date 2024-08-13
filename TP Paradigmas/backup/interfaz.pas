@@ -2,7 +2,7 @@ unit Interfaz;
 
 interface
 uses
-  crt,TiposDominio,Validaciones,ListaMemoriaPrincipal;
+  crt,TiposDominio,Validaciones,ListaMemoriaSecundaria;
 const
   color_selec=red;
   color_fondo=black;
@@ -11,7 +11,6 @@ const
 procedure Iniciar_Programa;
 
 implementation
-
 procedure Pedir_Datos_Evento(var evento: t_evento);
 var
   aux: string;
@@ -72,6 +71,126 @@ begin
   until ((Transf_Fecha(evento.fecha_fin) > Transf_Fecha(evento.fecha_inicio)) or (Transf_Hora(evento.hora_fin) > Transf_Hora(evento.hora_inicio))) and Valida_Hora(evento.hora_fin);
   Write('Ingrese ubicacion: ');
   readln(evento.ubicacion);
+end;
+procedure registra_evento(var l:t_lista;x:t_evento);
+var
+  aux:t_evento;
+begin
+  pedir_datos_evento(x);
+  if tamanio(l)>0 then
+  begin
+   Final(l);
+   Recuperar(l,aux);
+   x.id:=aux.id+1;
+  end
+  else x.id:=0;
+  agregar(l,x);
+end;
+
+procedure Mostrar_Evento(x: t_evento);
+begin
+  Writeln('');
+  Writeln('ID: ', x.id);
+  Writeln('Titulo: ',x.titulo);
+  Writeln('Descripcion: ',x.desc);
+  Writeln('Tipo de Evento: ',x.tipo);
+  Writeln('Fecha de Inicio: ',x.fecha_inicio);
+  Writeln('Fecha de Finalizacion: ',x.fecha_fin);
+  Writeln('Hora de Inicio: ',x.hora_inicio);
+  Writeln('Hora de Finalizacion: ',x.hora_fin);
+  Writeln('Ubicacion: ',x.ubicacion);
+  TextColor(3);
+  Writeln('');
+  Write('Presione una Tecla para continuar');
+  TextColor(15);
+  Readkey;
+end;
+procedure Buscar_Por_Tipo(var l:t_lista;tipo:shortstring);
+var
+  evento: t_evento;
+  enc: boolean;
+begin
+  enc:= false;
+  Primero(l);
+  while not(Fin(l)) do
+  begin
+    clrscr;
+    Recuperar(l,evento);
+    if (evento.tipo=tipo) then
+    begin
+      enc:= true;
+      Mostrar_Evento(evento);
+    end;
+  end;
+  clrscr;
+  if enc then
+  begin
+    Writeln('No se han encontrado mas eventos');
+    readkey;
+  end
+  else
+  begin
+   Writeln('No se han encontrado eventos');
+   readkey;
+  end;
+end;
+procedure Buscar_Por_Fechas(var l:t_lista; fechaini,fechafin:shortstring);
+var
+  evento: t_evento;
+  enc: boolean;
+begin
+  enc:= false;
+  Primero(l);
+  While not(Fin(l)) do
+  begin
+    clrscr;
+    Recuperar(l,evento);
+    if (Transf_Fecha(evento.fecha_inicio) >= Transf_Fecha(fechaini)) and (Transf_Fecha(evento.fecha_fin) <= Transf_Fecha(fechafin)) then
+    begin
+      enc:= true;
+      Mostrar_Evento(evento);
+    end;
+  end;
+  clrscr;
+  if enc then
+  begin
+    Writeln('No se han encontrado mas eventos');
+    readkey;
+  end
+  else
+  begin
+    Writeln('No se han encontrado eventos');
+    readkey;
+  end;
+end;
+Procedure Buscar_Por_Titulo(var l:t_lista;titulo:shortstring);
+var
+  evento: t_evento;
+  enc: boolean;
+begin
+  enc:= false;
+  Primero(l);
+  While not(Fin(l)) do
+  begin
+    clrscr;
+    recuperar(l,evento);
+    if Pos(titulo,evento.titulo)<>0 then
+    begin
+      enc:= true;
+      Mostrar_Evento(evento);
+    end;
+  end;
+  clrscr;
+  if enc then
+  begin
+    Writeln('No se han encontrado mas eventos');
+    readkey;
+  end
+  else
+  begin
+   Writeln('No se han encontrado eventos');
+   readkey;
+  end;
 end;
 procedure Pedir_ID_Evento(var id: byte);
 begin
@@ -137,7 +256,7 @@ begin
     Readln(titulo);
   end;
 end;
-procedure Menu_Opciones_Busqueda(var seleccionado: byte);
+procedure Menu_Opciones_Busqueda(var l:t_lista;var seleccionado: byte);
 var
   exit:boolean;
   tecla:char;
@@ -173,26 +292,26 @@ begin
     end;
   end;
 end;
-procedure Busqueda;
+procedure Busqueda(var l:t_lista);
 var
   seleccionado: byte;
   tipo_evento: shortstring;
   fecha_inicio,fecha_fin,titulo: shortstring;
 begin
   begin
-    Menu_Opciones_Busqueda(seleccionado);
+    Menu_Opciones_Busqueda(l,seleccionado);
     case seleccionado of
     1: begin
          Pedir_Tipo_Evento(tipo_evento);
-         Buscar_Por_Tipo(tipo_evento);
+         Buscar_Por_Tipo(l,tipo_evento);
        end;
     2: begin
          Pedir_FechaIni_FechaFin(fecha_inicio,fecha_fin);
-         Buscar_Por_Fechas(fecha_inicio,fecha_fin);
+         Buscar_Por_Fechas(l,fecha_inicio,fecha_fin);
        end;
     3: begin
          Pedir_Titulo_Evento(titulo);
-         Buscar_Por_Titulo(titulo);
+         Buscar_Por_Titulo(l,titulo);
        end;
     end;
   end;
@@ -238,26 +357,26 @@ var
   seleccionado: byte;
   evento: t_evento;
   id: byte;
+  l:t_lista;
 begin
   seleccionado:= 0;
-  Crear_Lista_Arch;
+  Crear_Lista(l);
   While seleccionado <> 4 do
   begin
     menu_opciones(seleccionado);
     case seleccionado of
     1: begin
-         Pedir_datos_evento(evento);
-         Registrar_Evento(evento);
+         registra_evento(l,evento);
        end;
-    2: Busqueda;
+    2: Busqueda(l);
     3: begin
          Pedir_ID_Evento(id);
-         Eliminar_Evento(id);
+         Eliminarlista(l,id,evento); //acá lo mismo
        end;
     end;
   end;
 end;
-procedure prueba_unitaria_1();
+{procedure prueba_unitaria_1();
 var
   x:t_evento;
 begin
@@ -269,7 +388,8 @@ begin
   x.hora_inicio:='00:00';
   x.hora_fin:='00:00';
   x.ubicacion:='a';
-  Registrar_evento(x);
+  x.id:=1;
+  agregar(x);
   if tamanio(l)=1 then writeln('Prueba Unitaria 1 superada') else writeln('Prueba Unitaria 1 fallada');
 end;
 procedure prueba_unitaria_2();
@@ -284,9 +404,10 @@ begin
   x.hora_inicio:='00:00';
   x.hora_fin:='00:00';
   x.ubicacion:='a';
-  Registrar_evento(x);
-  Eliminar_evento(x.id)
+  x.id:=1;
+  agregar(x);
+  Eliminar_evento(x.id);
   if tamanio(l)=0 then writeln('Prueba Unitaria 2 superada') else writeln('Prueba Unitaria 2 fallada');
-end;
+end; }
 end.
 

@@ -9,170 +9,73 @@ uses
 
 const
      Ruta = './archivo.dat';
+type
+t_lista = file of t_evento;
 
-var arch: t_archivo;
-
-procedure Crear_Lista_Arch;
-procedure CerrarArchivo(var arch: t_archivo);
-procedure Registrar_Evento(evento: t_evento);
-procedure Buscar_Por_Tipo(tipo:shortstring);
-procedure Buscar_Por_Fechas(fechaini,fechafin:shortstring);
-Procedure Buscar_Por_Titulo(titulo:shortstring);
-procedure Eliminar_Evento(id:byte);
-
+procedure Crear_Lista(var l:t_lista);
+procedure Agregar(var l: t_lista; x: t_evento);
+procedure Desplazar_Adelante(var l: t_lista; posicion: byte);
+procedure EliminarLista(var l: t_lista; buscado: byte; var x: t_evento);
+procedure Primero(var l: t_lista);
+function Fin(var l: t_lista): boolean;
+function Tamanio(var l: t_lista): byte;
+procedure Recuperar(var l: t_lista; var x: t_evento);
+procedure final(var l:t_lista);
 implementation
-
-procedure Crear_Lista_Arch;
+procedure Crear_Lista(var l:t_lista);
 begin
-  Assign(arch,Ruta);
-  Reset(arch);
+  Assign(l,ruta);
+  Reset(l);
 end;
-procedure CerrarArchivo(var arch: t_archivo);
+procedure recuperar (var l:t_lista;var x:t_evento);
 begin
-  Close(arch);
+  read(l,x);
 end;
-function Tamanio(var arch: t_archivo): byte;
+function Tamanio(var l: t_lista): byte;
 begin
-  Tamanio:= filesize(arch);
+  Tamanio:= filesize(l);
 end;
-Procedure Primero(var arch: t_archivo);
+Procedure Primero(var l: t_lista);
 begin
-  seek(arch,0);
+  seek(l,0);
 end;
-procedure AgregarArchivo(var arch: t_archivo; x: t_evento);
+procedure Agregar(var l: t_lista; x: t_evento);
 begin
-  Seek(arch,tamanio(arch));
-  Write(arch,x);
+  Seek(l,tamanio(l));
+  Write(l,x);
 end;
-procedure EliminarDelArchivo(var arch: t_archivo; pos: byte);
+procedure desplazar_adelante(var l:t_lista;posicion:byte);
 var
+  i: byte;
   x: t_evento;
 begin
-  seek(arch,pos);
-  read(arch,x);
-  if x.tipo <> 'BAJA' then
+  for i:= posicion to Tamanio(l) - 2 do
   begin
-    x.tipo:= 'BAJA';
-    seek(arch,filepos(arch)-1);
-    write(arch,x);
+    seek(l,i+1);
+    read(l,x);
+    seek(l,i);
+    write(l,x);
   end;
 end;
-procedure Mostrar_Evento(x: t_evento);
+procedure Eliminarlista(var l: t_lista; buscado: byte;var x:t_evento);
 begin
-  Writeln('');
-  Writeln('ID: ', x.id);
-  Writeln('Titulo: ',x.titulo);
-  Writeln('Descripcion: ',x.desc);
-  Writeln('Tipo de Evento: ',x.tipo);
-  Writeln('Fecha de Inicio: ',x.fecha_inicio);
-  Writeln('Fecha de Finalizacion: ',x.fecha_fin);
-  Writeln('Hora de Inicio: ',x.hora_inicio);
-  Writeln('Hora de Finalizacion: ',x.hora_fin);
-  Writeln('Ubicacion: ',x.ubicacion);
-  TextColor(3);
-  Writeln('');
-  Write('Presione una Tecla para continuar');
-  TextColor(15);
-  Readkey;
-end;
-procedure Registrar_Evento(evento: t_evento);
-begin
-   evento.id:= filesize(arch);
-   AgregarArchivo(arch,evento);
-end;
-procedure Buscar_Por_Tipo(tipo:shortstring);
-var
-  evento: t_evento;
-  enc: boolean;
-begin
-  enc:= false;
-  Primero(arch);
-  while not(EOF(arch)) do
+  seek(l,buscado);
+  read(l,x);
+  if tamanio(l)>1 then
   begin
-    clrscr;
-    read(arch,evento);
-    if (evento.tipo=tipo) then
-    begin
-      enc:= true;
-      Mostrar_Evento(evento);
-    end;
-  end;
-  clrscr;
-  if enc then
-  begin
-    Writeln('No se han encontrado mas eventos');
-    readkey;
+    desplazar_adelante(l,buscado);
   end
   else
-  begin
-   Writeln('No se han encontrado eventos');
-   readkey;
-  end;
+    seek(l,buscado);
+  truncate(l);
 end;
-procedure Buscar_Por_Fechas(fechaini,fechafin:shortstring);
-var
-  evento: t_evento;
-  enc: boolean;
+function Fin(var l:t_lista):boolean;
 begin
-  enc:= false;
-  Primero(arch);
-  While not(EOF(arch)) do
-  begin
-    clrscr;
-    Read(arch,evento);
-    if (Transf_Fecha(evento.fecha_inicio) >= Transf_Fecha(fechaini)) and (Transf_Fecha(evento.fecha_fin) <= Transf_Fecha(fechafin)) and (evento.tipo <> 'BAJA') then
-    begin
-      enc:= true;
-      Mostrar_Evento(evento);
-    end;
-  end;
-  clrscr;
-  if enc then
-  begin
-    Writeln('No se han encontrado mas eventos');
-    readkey;
-  end
-  else
-  begin
-    Writeln('No se han encontrado eventos');
-    readkey;
-  end;
+  fin:=eof(l);
 end;
-Procedure Buscar_Por_Titulo(titulo:shortstring);
-var
-  evento: t_evento;
-  enc: boolean;
+procedure final(var l:t_lista);
 begin
-  enc:= false;
-  Primero(arch);
-  While not(EOF(arch)) do
-  begin
-    clrscr;
-    Read(arch,evento);
-    if (Pos(titulo,evento.titulo) <> 0) and (evento.tipo <> 'BAJA') then
-    begin
-      enc:= true;
-      Mostrar_Evento(evento);
-    end;
-  end;
-  clrscr;
-  if enc then
-  begin
-    Writeln('No se han encontrado mas eventos');
-    readkey;
-  end
-  else
-  begin
-   Writeln('No se han encontrado eventos');
-   readkey;
-  end;
-end;
-procedure Eliminar_Evento(id:byte);
-begin
-  if id < tamanio(arch) then
-    EliminarDelArchivo(arch,id)
-  else
-    Writeln('No se encontro el evento a eliminar');
+  seek(l,filesize(l)-1);
 end;
 end.
 

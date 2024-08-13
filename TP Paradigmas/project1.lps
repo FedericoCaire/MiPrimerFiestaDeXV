@@ -9,7 +9,7 @@
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
         <CursorPos X="11" Y="3"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="46"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -17,8 +17,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="TiposDominio"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="23" Y="7"/>
-        <UsageCount Value="43"/>
+        <CursorPos X="7" Y="19"/>
+        <UsageCount Value="46"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -26,11 +26,10 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="Interfaz"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="264"/>
-        <CursorPos X="25" Y="288"/>
-        <FoldState Value=" T3E0y5 pj9kW0N2 PiFiH0!"/>
-        <UsageCount Value="43"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="54" Y="5"/>
+        <FoldState Value=" T3j30H014 pj0k80J211 Picj600"/>
+        <UsageCount Value="46"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -39,26 +38,27 @@
         <UnitName Value="Validaciones"/>
         <EditorIndex Value="5"/>
         <CursorPos Y="32"/>
-        <UsageCount Value="31"/>
+        <UsageCount Value="34"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="listamemoriasecundaria.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ListaMemoriaSecundaria"/>
-        <EditorIndex Value="3"/>
-        <CursorPos X="25" Y="47"/>
-        <FoldState Value=" T3O049 pjGjU0S1W"/>
-        <UsageCount Value="31"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="13"/>
+        <CursorPos X="8" Y="28"/>
+        <UsageCount Value="34"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="listamemoriaprincipal.pas"/>
         <UnitName Value="ListaMemoriaPrincipal"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="33" Y="6"/>
-        <FoldState Value=" T3iI04A piaj80T3 PiNj40l"/>
-        <UsageCount Value="23"/>
+        <TopLine Value="58"/>
+        <CursorPos X="28" Y="109"/>
+        <FoldState Value=" T3Q0E514 PiCjC0v"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -94,123 +94,123 @@
     <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="interfaz.pas"/>
-        <Caret Line="64" Column="96" TopLine="46"/>
-      </Position>
-      <Position>
-        <Filename Value="listamemoriaprincipal.pas"/>
-        <Caret Line="121" Column="32" TopLine="44"/>
+        <Caret Line="300" Column="30" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="interfaz.pas"/>
-        <Caret Line="269" Column="8"/>
+        <Caret Line="288" Column="29" TopLine="233"/>
       </Position>
       <Position>
         <Filename Value="interfaz.pas"/>
-        <Caret Line="221" Column="13" TopLine="209"/>
+        <Caret Line="358" Column="18" TopLine="343"/>
       </Position>
       <Position>
         <Filename Value="interfaz.pas"/>
-        <Caret Line="3" Column="20"/>
-      </Position>
-      <Position>
-        <Filename Value="tiposdominio.pas"/>
-        <Caret Line="3"/>
-      </Position>
-      <Position>
-        <Filename Value="listamemoriaprincipal.pas"/>
-        <Caret Line="3" Column="18"/>
-      </Position>
-      <Position>
-        <Filename Value="validaciones.pas"/>
-        <Caret Line="7" Column="16"/>
-      </Position>
-      <Position>
-        <Filename Value="listamemoriaprincipal.pas"/>
-        <Caret Line="239" Column="21" TopLine="24"/>
-      </Position>
-      <Position>
-        <Filename Value="listamemoriaprincipal.pas"/>
-        <Caret Line="6" Column="18"/>
+        <Caret Line="361" Column="18" TopLine="349"/>
       </Position>
       <Position>
         <Filename Value="interfaz.pas"/>
-        <Caret Line="5" Column="33"/>
+        <Caret Line="356" Column="28" TopLine="343"/>
       </Position>
       <Position>
-        <Filename Value="listamemoriaprincipal.pas"/>
-        <Caret Line="127" TopLine="114"/>
+        <Filename Value="interfaz.pas"/>
+        <Caret Line="17" Column="20" TopLine="350"/>
       </Position>
       <Position>
-        <Filename Value="listamemoriaprincipal.pas"/>
-        <Caret Line="18" TopLine="7"/>
+        <Filename Value="interfaz.pas"/>
+        <Caret Line="74" Column="5" TopLine="50"/>
       </Position>
       <Position>
-        <Filename Value="listamemoriaprincipal.pas"/>
-        <Caret Line="13" TopLine="10"/>
+        <Filename Value="interfaz.pas"/>
+        <Caret Line="79" Column="14" TopLine="67"/>
       </Position>
       <Position>
-        <Filename Value="listamemoriaprincipal.pas"/>
-        <Caret Line="18" TopLine="11"/>
+        <Filename Value="interfaz.pas"/>
+        <Caret Line="5" Column="55"/>
       </Position>
       <Position>
         <Filename Value="listamemoriasecundaria.pas"/>
-        <Caret Line="188" Column="7" TopLine="10"/>
+        <Caret Line="12" Column="5"/>
       </Position>
       <Position>
         <Filename Value="listamemoriasecundaria.pas"/>
-        <Caret Line="8" Column="7"/>
+        <Caret Line="30" Column="9" TopLine="17"/>
       </Position>
       <Position>
         <Filename Value="listamemoriasecundaria.pas"/>
-        <Caret Line="78" TopLine="67"/>
+        <Caret Line="32" Column="36" TopLine="21"/>
+      </Position>
+      <Position>
+        <Filename Value="listamemoriasecundaria.pas"/>
+        <Caret Line="31" Column="5" TopLine="11"/>
+      </Position>
+      <Position>
+        <Filename Value="listamemoriasecundaria.pas"/>
+        <Caret Line="42" Column="9" TopLine="26"/>
+      </Position>
+      <Position>
+        <Filename Value="listamemoriasecundaria.pas"/>
+        <Caret Line="47" Column="10" TopLine="30"/>
+      </Position>
+      <Position>
+        <Filename Value="listamemoriasecundaria.pas"/>
+        <Caret Line="38" Column="25" TopLine="30"/>
+      </Position>
+      <Position>
+        <Filename Value="listamemoriasecundaria.pas"/>
+        <Caret Line="59" Column="12" TopLine="40"/>
+      </Position>
+      <Position>
+        <Filename Value="listamemoriasecundaria.pas"/>
+        <Caret Line="62" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="listamemoriasecundaria.pas"/>
+        <Caret Line="18" TopLine="5"/>
+      </Position>
+      <Position>
+        <Filename Value="listamemoriasecundaria.pas"/>
+        <Caret Line="19"/>
+      </Position>
+      <Position>
+        <Filename Value="listamemoriasecundaria.pas"/>
+        <Caret Line="20"/>
+      </Position>
+      <Position>
+        <Filename Value="listamemoriasecundaria.pas"/>
+        <Caret Line="63" Column="15" TopLine="38"/>
+      </Position>
+      <Position>
+        <Filename Value="listamemoriasecundaria.pas"/>
+        <Caret Line="20" Column="36" TopLine="4"/>
+      </Position>
+      <Position>
+        <Filename Value="listamemoriasecundaria.pas"/>
+        <Caret Line="48" Column="67" TopLine="37"/>
       </Position>
       <Position>
         <Filename Value="listamemoriaprincipal.pas"/>
-        <Caret Line="250" Column="26" TopLine="25"/>
+        <Caret Line="110" Column="21" TopLine="36"/>
       </Position>
       <Position>
         <Filename Value="listamemoriasecundaria.pas"/>
-        <Caret Line="8" Column="32"/>
-      </Position>
-      <Position>
-        <Filename Value="interfaz.pas"/>
-        <Caret Line="5" Column="54"/>
-      </Position>
-      <Position>
-        <Filename Value="listamemoriaprincipal.pas"/>
-        <Caret Line="47" Column="38" TopLine="26"/>
-      </Position>
-      <Position>
-        <Filename Value="listamemoriaprincipal.pas"/>
-        <Caret Line="58" Column="19" TopLine="27"/>
-      </Position>
-      <Position>
-        <Filename Value="interfaz.pas"/>
-        <Caret Line="5" Column="54"/>
+        <Caret Line="65" Column="15" TopLine="47"/>
       </Position>
       <Position>
         <Filename Value="listamemoriasecundaria.pas"/>
-        <Caret Line="155" Column="64" TopLine="12"/>
+        <Caret Line="20" Column="18" TopLine="7"/>
       </Position>
       <Position>
         <Filename Value="listamemoriasecundaria.pas"/>
-        <Caret Line="62" Column="27" TopLine="47"/>
+        <Caret Line="22" Column="42" TopLine="17"/>
+      </Position>
+      <Position>
+        <Filename Value="listamemoriasecundaria.pas"/>
+        <Caret Line="28" Column="10" TopLine="16"/>
       </Position>
       <Position>
         <Filename Value="interfaz.pas"/>
-        <Caret Line="12" TopLine="13"/>
-      </Position>
-      <Position>
-        <Filename Value="interfaz.pas"/>
-        <Caret Line="265" Column="9" TopLine="128"/>
-      </Position>
-      <Position>
-        <Filename Value="interfaz.pas"/>
-        <Caret Line="270" Column="16" TopLine="236"/>
-      </Position>
-      <Position>
-        <Filename Value="interfaz.pas"/>
-        <Caret Line="285" Column="18" TopLine="264"/>
+        <Caret Line="82" Column="14" TopLine="64"/>
       </Position>
     </JumpHistory>
     <RunParams>
