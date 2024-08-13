@@ -17,7 +17,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="TiposDominio"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="24" Y="20"/>
+        <CursorPos X="23" Y="7"/>
         <UsageCount Value="43"/>
         <Loaded Value="True"/>
       </Unit>
@@ -25,8 +25,10 @@
         <Filename Value="interfaz.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Interfaz"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <CursorPos X="54" Y="5"/>
+        <TopLine Value="264"/>
+        <CursorPos X="18" Y="285"/>
         <FoldState Value=" T3E0y5 pj9kW0N2 PiFiH0!"/>
         <UsageCount Value="43"/>
         <Loaded Value="True"/>
@@ -35,11 +37,8 @@
         <Filename Value="validaciones.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Validaciones"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="3"/>
-        <CursorPos X="216" Y="34"/>
-        <FoldState Value=" T3H09112 PLY09"/>
+        <CursorPos Y="32"/>
         <UsageCount Value="31"/>
         <Loaded Value="True"/>
       </Unit>
@@ -57,8 +56,7 @@
         <Filename Value="listamemoriaprincipal.pas"/>
         <UnitName Value="ListaMemoriaPrincipal"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="23"/>
-        <CursorPos X="3" Y="35"/>
+        <CursorPos X="33" Y="6"/>
         <FoldState Value=" T3iI04A piaj80T3 PiNj40l"/>
         <UsageCount Value="23"/>
         <Loaded Value="True"/>
@@ -94,18 +92,6 @@
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="interfaz.pas"/>
-        <Caret Line="84" Column="34" TopLine="70"/>
-      </Position>
-      <Position>
-        <Filename Value="interfaz.pas"/>
-        <Caret Line="151" Column="36" TopLine="105"/>
-      </Position>
-      <Position>
-        <Filename Value="interfaz.pas"/>
-        <Caret Line="89" Column="68" TopLine="72"/>
-      </Position>
       <Position>
         <Filename Value="tiposdominio.pas"/>
         <Caret Line="7" Column="20"/>
@@ -213,6 +199,18 @@
       <Position>
         <Filename Value="listamemoriasecundaria.pas"/>
         <Caret Line="62" Column="27" TopLine="47"/>
+      </Position>
+      <Position>
+        <Filename Value="interfaz.pas"/>
+        <Caret Line="12" TopLine="13"/>
+      </Position>
+      <Position>
+        <Filename Value="interfaz.pas"/>
+        <Caret Line="265" Column="9" TopLine="128"/>
+      </Position>
+      <Position>
+        <Filename Value="interfaz.pas"/>
+        <Caret Line="270" Column="16" TopLine="236"/>
       </Position>
     </JumpHistory>
     <RunParams>

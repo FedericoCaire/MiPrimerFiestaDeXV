@@ -257,6 +257,36 @@ begin
     end;
   end;
 end;
-
+procedure prueba_unitaria_1();
+var
+  x:t_evento;
+begin
+  x.titulo:='a';
+  x.desc:='a';
+  x.tipo:='otro';
+  x.fecha_inicio:='00/00/0000';
+  x.fecha_fin:='00/00/0000';
+  x.hora_inicio:='00:00';
+  x.hora_fin:='00:00';
+  x.ubicacion:='a';
+  Registrar_evento(x);
+  if tamanio(l)=1 then writeln('Prueba Unitaria 1 superada') else writeln('Prueba Unitaria 1 fallada');
+end;
+procedure prueba_unitaria_2();
+var
+  x:t_evento;
+begin
+  x.titulo:='a';
+  x.desc:='a';
+  x.tipo:='otro';
+  x.fecha_inicio:='00/00/0000';
+  x.fecha_fin:='00/00/0000';
+  x.hora_inicio:='00:00';
+  x.hora_fin:='00:00';
+  x.ubicacion:='a';
+  Registrar_evento(x);
+  Eliminar_evento(x.id);
+  if tamanio(l)=0 then writeln('Prueba Unitaria 2 superada') else writeln('Prueba Unitaria 2 fallada');
+end;
 end.
 
