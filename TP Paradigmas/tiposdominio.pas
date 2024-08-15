@@ -10,11 +10,11 @@ type
      id: byte;
      titulo: shortstring;
      desc: shortstring;
-     tipo: shortstring;
-     fecha_inicio: shortstring;
-     fecha_fin: shortstring;
-     hora_inicio: shortstring;
-     hora_fin: shortstring;
+     tipo: string[15];
+     fecha_inicio: string[15];
+     fecha_fin: string[15];
+     hora_inicio: string[7];
+     hora_fin: string[7];
      ubicacion: shortstring;
   end;
 

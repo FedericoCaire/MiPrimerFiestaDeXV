@@ -1,7 +1,8 @@
 program project1;
 uses
-  Interfaz, Validaciones, ListaMemoriaSecundaria;
+  Crt, Interfaz, listamemoriasecundariaPOO;
+var i:ClassInterfaz;
 begin
-  Iniciar_Programa;
+  i.Iniciar_Programa;
 end.
 

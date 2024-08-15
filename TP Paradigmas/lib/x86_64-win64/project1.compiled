@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
-  <Compiler Value="C:\lazarus\fpc\3.2.2\bin\x86_64-win64\fpc.exe" Date="1449427374"/>
-  <Params Value=" -MObjFPC -Scghi -O1 -gw2 -godwarfsets -gl -l -vewnhibq &quot;-FiD:\Archivos Personales\Documents\GitHub\Pruebas\MiPrimerFiestaDeXV\TP Paradigmas\lib\x86_64-win64&quot; &quot;-FuD:\Archivos Personales\Documents\GitHub\Pruebas\MiPrimerFiestaDeXV\TP Paradigmas\&quot; &quot;-FUD:\Archivos Personales\Documents\GitHub\Pruebas\MiPrimerFiestaDeXV\TP Paradigmas\lib\x86_64-win64\&quot; &quot;-FED:\Archivos Personales\Documents\GitHub\Pruebas\MiPrimerFiestaDeXV\TP Paradigmas\&quot; &quot;-oD:\Archivos Personales\Documents\GitHub\Pruebas\MiPrimerFiestaDeXV\TP Paradigmas\project1.exe&quot; project1.lpr"/>
+  <Compiler Value="C:\lazarus\fpc\3.2.2\bin\x86_64-win64\fpc.exe" Date="1457173459"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -gw2 -godwarfsets -gl -l -vewnhibq &quot;-FiC:\Users\jerem\OneDrive\Documentos\Paradigmas\MiPrimerFiestaDeXV\TP Paradigmas\lib\x86_64-win64&quot; &quot;-FuC:\Users\jerem\OneDrive\Documentos\Paradigmas\MiPrimerFiestaDeXV\TP Paradigmas\&quot; &quot;-FUC:\Users\jerem\OneDrive\Documentos\Paradigmas\MiPrimerFiestaDeXV\TP Paradigmas\lib\x86_64-win64\&quot; &quot;-FEC:\Users\jerem\OneDrive\Documentos\Paradigmas\MiPrimerFiestaDeXV\TP Paradigmas\&quot; &quot;-oC:\Users\jerem\OneDrive\Documentos\Paradigmas\MiPrimerFiestaDeXV\TP Paradigmas\project1.exe&quot; project1.lpr"/>
 </CONFIG>

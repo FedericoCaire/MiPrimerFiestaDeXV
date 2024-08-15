@@ -49,6 +49,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ListaMemoriaSecundaria"/>
       </Unit>
+      <Unit>
+        <Filename Value="listamemoriaprincipalpoo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="listamemoriaprincipalPOO"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -1,17 +1,37 @@
 unit Interfaz;
 
 interface
+
 uses
-  crt,TiposDominio,Validaciones,ListaMemoriaPrincipal;
+  crt,TiposDominio,Validaciones,ListaMemoriaSecundariaPOO;
+
 const
   color_selec=red;
   color_fondo=black;
   color_salir=red;
 
-procedure Iniciar_Programa;
+type
+  ClassInterfaz = object
+    L: ClassLista;
+    procedure Pedir_Datos_Evento(var evento: t_evento);
+    procedure Registra_Evento(x: t_evento);
+    procedure Mostrar_Evento(x: t_evento);
+    procedure Buscar_Por_Tipo(tipo: shortstring);
+    procedure Buscar_Por_Fechas(fechaini,fechafin: shortstring);
+    Procedure Buscar_Por_Titulo(titulo: shortstring);
+    procedure Pedir_ID_Evento(var id: byte);
+    procedure Pedir_Tipo_Evento(var tipo_evento: shortstring);
+    procedure Pedir_FechaIni_FechaFin(var fecha_inicio,fecha_fin: shortstring);
+    procedure Pedir_Titulo_Evento(var titulo: shortstring);
+    procedure Menu_Opciones_Busqueda(var seleccionado: byte);
+    procedure Busqueda;
+    procedure Menu_Opciones(var seleccionado: byte);
+    procedure Iniciar_Programa;
+  end;
 
 implementation
-procedure Pedir_Datos_Evento(var evento: t_evento);
+
+procedure ClassInterfaz.Pedir_Datos_Evento(var evento: t_evento);
 var
   aux: string;
 begin
@@ -72,22 +92,21 @@ begin
   Write('Ingrese ubicacion: ');
   readln(evento.ubicacion);
 end;
-procedure registra_evento(var l:t_lista;x:t_evento);
+procedure ClassInterfaz.Registra_Evento(x:t_evento);
 var
-  aux:t_evento;
+  aux: t_evento;
 begin
   pedir_datos_evento(x);
-  if tamanio(l)>0 then
+  if l.Tamanio > 0 then
   begin
-   Final(l);
-   Recuperar(l,aux);
+   l.Final;
+   l.Recuperar(aux);
    x.id:=aux.id+1;
   end
   else x.id:=0;
-  agregar(l,x);
+  l.agregar(x);
 end;
-
-procedure Mostrar_Evento(x: t_evento);
+procedure ClassInterfaz.Mostrar_Evento(x: t_evento);
 begin
   Writeln('');
   Writeln('ID: ', x.id);
@@ -105,17 +124,17 @@ begin
   TextColor(15);
   Readkey;
 end;
-procedure Buscar_Por_Tipo(var l:t_lista;tipo:shortstring);
+procedure ClassInterfaz.Buscar_Por_Tipo(tipo:shortstring);
 var
   evento: t_evento;
   enc: boolean;
 begin
   enc:= false;
-  Primero(l);
-  while not(Fin(l)) do
+  l.Primero;
+  while not(l.Fin) do
   begin
     clrscr;
-    Recuperar(l,evento);
+    l.Recuperar(evento);
     if (evento.tipo=tipo) then
     begin
       enc:= true;
@@ -134,17 +153,17 @@ begin
    readkey;
   end;
 end;
-procedure Buscar_Por_Fechas(var l:t_lista; fechaini,fechafin:shortstring);
+procedure ClassInterfaz.Buscar_Por_Fechas(fechaini,fechafin:shortstring);
 var
   evento: t_evento;
   enc: boolean;
 begin
   enc:= false;
-  Primero(l);
-  While not(Fin(l)) do
+  l.Primero;
+  While not(l.Fin) do
   begin
     clrscr;
-    Recuperar(l,evento);
+    l.Recuperar(evento);
     if (Transf_Fecha(evento.fecha_inicio) >= Transf_Fecha(fechaini)) and (Transf_Fecha(evento.fecha_fin) <= Transf_Fecha(fechafin)) then
     begin
       enc:= true;
@@ -163,18 +182,18 @@ begin
     readkey;
   end;
 end;
-Procedure Buscar_Por_Titulo(var l:t_lista;titulo:shortstring);
+Procedure ClassInterfaz.Buscar_Por_Titulo(titulo:shortstring);
 var
   evento: t_evento;
   enc: boolean;
 begin
   enc:= false;
-  Primero(l);
-  While not(Fin(l)) do
+  l.Primero;
+  While not(l.Fin) do
   begin
     clrscr;
-    recuperar(l,evento);
-    if Pos(titulo,evento.titulo)<>0 then
+    l.Recuperar(evento);
+    if Pos(titulo,evento.titulo) <> 0 then
     begin
       enc:= true;
       Mostrar_Evento(evento);
@@ -192,7 +211,7 @@ begin
    readkey;
   end;
 end;
-procedure Pedir_ID_Evento(var id: byte);
+procedure ClassInterfaz.Pedir_ID_Evento(var id: byte);
 begin
   clrscr;
   repeat
@@ -202,7 +221,7 @@ begin
     readln(id);
   until id < N;
 end;
-procedure Pedir_Tipo_Evento(var tipo_evento: shortstring);
+procedure ClassInterfaz.Pedir_Tipo_Evento(var tipo_evento: shortstring);
 var
   buscado: shortstring;
   aux_tipo: shortstring;
@@ -224,7 +243,7 @@ begin
   ClrEol;
   tipo_evento:= aux_tipo;
 end;
-procedure Pedir_FechaIni_FechaFin(var fecha_inicio,fecha_fin: shortstring);
+procedure ClassInterfaz.Pedir_FechaIni_FechaFin(var fecha_inicio,fecha_fin: shortstring);
 begin
   ClrScr;
   fecha_inicio:='';
@@ -244,7 +263,7 @@ begin
     Readln(fecha_fin);
   end;
 end;
-procedure Pedir_Titulo_Evento(var titulo: shortstring);
+procedure ClassInterfaz.Pedir_Titulo_Evento(var titulo: shortstring);
 begin
   ClrScr;
   titulo:= '';
@@ -256,7 +275,7 @@ begin
     Readln(titulo);
   end;
 end;
-procedure Menu_Opciones_Busqueda(var l:t_lista;var seleccionado: byte);
+procedure ClassInterfaz.Menu_Opciones_Busqueda(var seleccionado: byte);
 var
   exit:boolean;
   tecla:char;
@@ -292,31 +311,31 @@ begin
     end;
   end;
 end;
-procedure Busqueda(var l:t_lista);
+procedure ClassInterfaz.Busqueda;
 var
   seleccionado: byte;
   tipo_evento: shortstring;
   fecha_inicio,fecha_fin,titulo: shortstring;
 begin
   begin
-    Menu_Opciones_Busqueda(l,seleccionado);
+    Menu_Opciones_Busqueda(seleccionado);
     case seleccionado of
     1: begin
          Pedir_Tipo_Evento(tipo_evento);
-         Buscar_Por_Tipo(l,tipo_evento);
+         Buscar_Por_Tipo(tipo_evento);
        end;
     2: begin
          Pedir_FechaIni_FechaFin(fecha_inicio,fecha_fin);
-         Buscar_Por_Fechas(l,fecha_inicio,fecha_fin);
+         Buscar_Por_Fechas(fecha_inicio,fecha_fin);
        end;
     3: begin
          Pedir_Titulo_Evento(titulo);
-         Buscar_Por_Titulo(l,titulo);
+         Buscar_Por_Titulo(titulo);
        end;
     end;
   end;
 end;
-procedure Menu_Opciones(var seleccionado: byte);
+procedure ClassInterfaz.Menu_Opciones(var seleccionado: byte);
 var
   exit: boolean;
   tecla: char;
@@ -352,26 +371,25 @@ begin
     end;
   end;
 end;
-procedure Iniciar_Programa;
+procedure ClassInterfaz.Iniciar_Programa;
 var
   seleccionado: byte;
   evento: t_evento;
   id: byte;
-  l:t_lista;
 begin
   seleccionado:= 0;
-  Crear_Lista(l);
+  l.Crear_Lista;
   While seleccionado <> 4 do
   begin
     menu_opciones(seleccionado);
     case seleccionado of
     1: begin
-         registra_evento(l,evento);
+         Registra_evento(evento);
        end;
-    2: Busqueda(l);
+    2: Busqueda;
     3: begin
          Pedir_ID_Evento(id);
-         Eliminarlista(l,id,evento); //acá lo mismo
+         l.Eliminarlista(id,evento); //acá lo mqismo
        end;
     end;
   end;

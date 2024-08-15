@@ -17,11 +17,6 @@ type
      hora_fin: shortstring;
      ubicacion: shortstring;
   end;
-  t_lista = record
-    cab,act,tam: byte;
-    elem: array[1..N] of t_evento;
-  end;
-  t_archivo = file of t_evento;
 
 implementation
 end.
