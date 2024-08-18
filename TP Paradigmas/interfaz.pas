@@ -3,7 +3,7 @@ unit Interfaz;
 interface
 
 uses
-  crt,TiposDominio,Validaciones,ListaMemoriaSecundariaPOO;
+  crt,TiposDominio,Validaciones,ListaMemoriaPrincipalPOO;
 
 const
   color_selec=red;
@@ -101,7 +101,7 @@ begin
   begin
    l.Final;
    l.Recuperar(aux);
-   x.id:=aux.id+1;
+   x.id:= aux.id+1;
   end
   else x.id:=0;
   l.agregar(x);
@@ -389,7 +389,7 @@ begin
     2: Busqueda;
     3: begin
          Pedir_ID_Evento(id);
-         l.Eliminarlista(id,evento); //acá lo mqismo
+         l.Eliminarlista(id,evento);
        end;
     end;
   end;

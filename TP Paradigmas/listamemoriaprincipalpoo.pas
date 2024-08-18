@@ -1,9 +1,9 @@
-unit listamemoriaprincipalPOO;
+unit ListaMemoriaPrincipalPOO;
 
 interface
 
 uses
-  TiposDominio;
+  crt, TiposDominio;
 
 type
   ClassLista = object
@@ -41,12 +41,12 @@ begin
 end;}
 procedure ClassLista.Crear_Lista();
 begin
-  cab := 0;
-  tam := 0;
+  cab:= 0;
+  tam:= 0;
 end;
 function ClassLista.Tamanio(): byte;
 begin
-  Tamanio := tam;
+  Tamanio:= tam;
 end;
 procedure ClassLista.Desplazar_Atras(posicion: byte);
 var
@@ -97,25 +97,37 @@ begin
       cab:= 1;
     end
     else cab:= 0;
+    Dec(tam);
   end
   else
   begin
     act:= cab + 1;
-    while (elem[act].id <> buscado) do
+    while (elem[act].id <> buscado) and Not(Fin) do
       Siguiente;
-    x:= elem[act];
-    if act < Tamanio then
-      Desplazar_Adelante(act);
+    if elem[act].id = buscado then
+    begin
+      x:= elem[act];
+      if act < Tamanio then
+        Desplazar_Adelante(act);
+      Dec(tam);
+    end
+    else
+    begin
+      clrscr;
+      TextColor(4);
+      Writeln('El ID Ingresado no existe');
+      TextColor(15);
+      Readkey;
+    end;
   end;
-  Dec(tam)
 end;
 procedure ClassLista.Siguiente();
 begin
-  act := act + 1;
+  Inc(act);
 end;
 procedure ClassLista.Primero();
 begin
-  act := cab;
+  act:= cab;
 end;
 procedure ClassLista.Recuperar(var x: t_evento);
 begin
